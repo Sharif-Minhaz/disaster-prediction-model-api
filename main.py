@@ -1,4 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+
+from utils.predict import predict_disaster
 
 app = Flask(__name__)
 
@@ -13,14 +15,37 @@ def test():
     
     return jsonify(responseData)
 
-@app.route("/predict")
+@app.route('/predict', methods=['POST'])
 def predict():
-    responseData = {
-        "status": 200,
-        "success": True,
-        "message": "Prediction result: 'Here'",
-    }
-    
+    if request.method == 'POST':
+        request_data = request.json  # Parse JSON data from request body
+
+        # Check if 'date' and 'location' keys are in the JSON data
+        if 'date' in request_data and 'location' in request_data:
+            date = request_data['date']
+            location = request_data['location']
+            
+            # Call predict_disaster function with date and location
+            res = predict_disaster(date, location)
+
+            responseData = {
+                "status": 200,
+                "success": True,
+                "data": res,
+            }
+        else:
+            responseData = {
+                "status": 400,
+                "success": False,
+                "message": "Missing 'date' or 'location' in JSON data",
+            }
+    else:
+        responseData = {
+            "status": 400,
+            "success": False,
+            "message": "Invalid request method",
+        }
+        
     return jsonify(responseData)
 
 

@@ -1,0 +1,47 @@
+{
+	"Date": [
+		"1/1/2021",
+		"1/2/2021",
+		"1/3/2021",
+		"1/4/2021",
+		"1/5/2021",
+		"1/6/2021",
+		"1/7/2021",
+		"1/8/2021",
+		"1/9/2021",
+		"1/10/2021",
+		"1/11/2021",
+		"1/12/2021"
+	],
+	"Location": [
+		"Dhaka",
+		"Cumilla",
+		"Barishal",
+		"Barishal",
+		"Rajshahi",
+		"Chittagong",
+		"Mymensingh",
+		"Khulna",
+		"Rangpur",
+		"Dhaka",
+		"Cumilla",
+		"Rajshahi"
+	],
+	"Temperature (C)": [25, 24, 23, 22, 21, 20, 19, 18, 25, 24, 23, 22],
+	"Humidity (%)": [70, 75, 80, 85, 90, 80, 75, 70, 75, 80, 85, 90],
+	"Precipitation (mm)": [0, 5, 10, 15, 20, 10, 5, 0, 0, 5, 10, 15],
+	"Disaster": [
+		"None",
+		"Flood",
+		"Landslide",
+		"Cyclone",
+		"River erosion",
+		"Drought",
+		"Earthquake",
+		"Tornado",
+		"None",
+		"Flood",
+		"Landslide",
+		"Cyclone"
+	]
+}
