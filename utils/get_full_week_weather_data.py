@@ -7,8 +7,6 @@ def get_full_week_weather_data(start_date, location):
     # calculate the end date
     end_date = get_weekend_date(start_date)
 
-    print(start_date, end_date)
-
     # get the location's lat and lon
     lat, lon = get_location(location)
 

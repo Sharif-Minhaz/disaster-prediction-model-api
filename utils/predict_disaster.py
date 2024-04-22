@@ -83,7 +83,8 @@ def predict_disaster(date, location):
                 f"On {future_date.strftime('%Y-%m-%d')}, there is no predicted disaster risk in {input_location}.")
         else:
             output.append(
-                f"On {future_date.strftime('%Y-%m-%d')}, Alert: {prediction} can happen in {input_location} after {day} days, be careful.")
+                f"On {future_date.strftime('%Y-%m-%d')}, Alert: {prediction} can happen in {input_location}{', today. So, be careful' if day == 0 else ', after ' + str(day) + ' day/s, be careful.'}"
+            )
 
     # return the results
     return output
