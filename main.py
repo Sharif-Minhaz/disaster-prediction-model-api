@@ -1,8 +1,32 @@
+from werkzeug.exceptions import HTTPException
 from flask import Flask, jsonify, request
+import traceback
 
 from utils.predict_disaster import predict_disaster
 
 app = Flask(__name__)
+
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    # Check if the exception is an HTTPException to get the status code
+    if isinstance(e, HTTPException):
+        status_code = e.code
+    else:
+        # Default to 500 for non-HTTP exceptions
+        status_code = 500
+
+    # Get the traceback for the exception
+    traceback_str = traceback.format_exc()
+
+    # Create a JSON response with the error message and status code
+    response = jsonify({
+        "error": str(e),
+        "status_code": status_code,
+        "traceback": traceback_str
+    })
+    response.status_code = status_code
+    return response
 
 
 @app.route("/")

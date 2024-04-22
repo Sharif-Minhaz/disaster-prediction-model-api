@@ -13,6 +13,8 @@ def predict_disaster(date, location):
     input_date = date
     input_location = location
 
+    print(input_date)
+
     try:
         with open(os.path.join(os.path.dirname(__file__), '../data/data.json'), 'r') as f:
             data = json.load(f)
@@ -62,6 +64,8 @@ def predict_disaster(date, location):
         # Extract day and month
         future_day = future_date.day
         future_month = future_date.month
+
+        print(future_date, future_day, future_month)
 
         # Create input features
         input_features = [
