@@ -1,8 +1,9 @@
 from flask import Flask, jsonify, request
 
-from utils.predict import predict_disaster
+from utils.predict_disaster import predict_disaster
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def test():
@@ -12,8 +13,9 @@ def test():
         "success": True,
         "message": text,
     }
-    
+
     return jsonify(responseData)
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -24,7 +26,7 @@ def predict():
         if 'date' in request_data and 'location' in request_data:
             date = request_data['date']
             location = request_data['location']
-            
+
             # Call predict_disaster function with date and location
             res = predict_disaster(date, location)
 
@@ -45,7 +47,7 @@ def predict():
             "success": False,
             "message": "Invalid request method",
         }
-        
+
     return jsonify(responseData)
 
 
