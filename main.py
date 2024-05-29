@@ -1,10 +1,12 @@
 from werkzeug.exceptions import HTTPException
 from flask import Flask, jsonify, request
 import traceback
+from flask_cors import CORS
 
 from utils.predict_disaster import predict_disaster
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.errorhandler(Exception)
@@ -29,7 +31,7 @@ def handle_exception(e):
     return response
 
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def test():
     text = "Model is running perfectly"
     responseData = {
